@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AQUOCAR | Shampoo Premium para Autos - Brillo de 5 Estrellas</title>
+
+  <!-- Google Fonts: Playfair Display & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap"
+    rel="stylesheet" />
+
+  <!-- FontAwesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Configuración personalizada de Tailwind -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            aquocar: {
+              purple: '#6A1B9A',
+              purpleDark: '#4A148C',
+              purpleLight: '#CE93D8',
+              black: '#1A1A1A',
+              blackDeep: '#111111',
+              white: '#FFFFFF',
+            }
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            sans: ['"Inter"', 'sans-serif'],
+          },
+          boxShadow: {
+            'purple-glow': '0 10px 35px -5px rgba(106, 27, 154, 0.45)',
+            'purple-card': '0 15px 30px -10px rgba(206, 147, 216, 0.18)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Estilos personalizados y animaciones -->
+  <style>
+    body {
+      background-color: #1A1A1A;
+      color: #FFFFFF;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    h1,
+    h2,
+    h3,
+    .font-display {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Animación Hero Fade-In lento */
+    @keyframes slowFadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-animate-1 {
+      animation: slowFadeInUp 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .hero-animate-2 {
+      opacity: 0;
+      animation: slowFadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
+    }
+
+    .hero-animate-3 {
+      opacity: 0;
+      animation: slowFadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+    }
+
+    .hero-animate-4 {
+      opacity: 0;
+      animation: slowFadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.75s forwards;
+    }
+
+    /* Sistema Reveal al hacer Scroll (AOS custom ultra fluido) */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-36px);
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(36px);
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-zoom {
+      opacity: 0;
+      transform: scale(0.93);
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.active,
+    .reveal-left.active,
+    .reveal-right.active,
+    .reveal-zoom.active {
+      opacity: 1;
+      transform: translate(0, 0) scale(1);
+    }
+
+    /* Retrasos en cascada (Stagger) para los 5 valores */
+    .stagger-1 {
+      transition-delay: 0.08s;
+    }
+
+    .stagger-2 {
+      transition-delay: 0.18s;
+    }
+
+    .stagger-3 {
+      transition-delay: 0.28s;
+    }
+
+    .stagger-4 {
+      transition-delay: 0.38s;
+    }
+
+    .stagger-5 {
+      transition-delay: 0.48s;
+    }
+
+    /* Header Glassmorphism al hacer scroll */
+    .header-scrolled {
+      background-color: rgba(26, 26, 26, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(206, 147, 216, 0.2);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65);
+    }
+
+    /* Textura sutil de lujo */
+    .luxury-grid-bg {
+      background-image: radial-gradient(rgba(206, 147, 216, 0.12) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    /* Scrollbar elegante */
+    ::-webkit-scrollbar {
+      width: 9px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #1A1A1A;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #6A1B9A;
+      border-radius: 9999px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #CE93D8;
+    }
+  </style>
+</head>
+
+<body class="antialiased selection:bg-[#6A1B9A] selection:text-white">
+
+  <!-- =========================================================
+       1. HEADER (BARRA DE NAVEGACIÓN FIJA CON GLASSMORPHISM)
+  ========================================================== -->
+  <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 bg-transparent">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+
+      <!-- Logo Oficial AQUOCAR (Header)
+           INSTRUCCIÓN: Coloca tu archivo "logo.jpg" en la misma carpeta que este index.html
+           o cambia el atributo src="logo.jpg" por la ruta/URL de tu imagen oficial. -->
+      <div class="flex items-center gap-3">
+        <a href="#inicio" class="group flex items-center gap-3.5 focus:outline-none">
+          <div
+            class="bg-[#6A1B9A] rounded-xl overflow-hidden border border-[#CE93D8]/50 shadow-purple-glow flex items-center justify-center">
+            <img src="logo.jpg" alt="AQUOCAR - Shampoo para autos"
+              class="aquocar-official-logo h-11 sm:h-12 w-auto object-cover transform group-hover:scale-105 transition-transform duration-300"
+              onerror="this.src='https://placehold.co/240x120/4A148C/FFFFFF?text=AQUOCAR'" />
+          </div>
+          <div class="flex flex-col">
+            <span class="font-display font-extrabold text-xl sm:text-2xl tracking-[0.14em] text-white leading-none">
+              AQUO<span class="text-[#CE93D8]">CAR</span>
+            </span>
+            <span class="text-[10px] uppercase tracking-[0.24em] text-gray-300 mt-1">Shampoo para autos</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Menú Desktop -->
+      <nav class="hidden md:flex items-center space-x-7 text-sm font-medium">
+        <a href="#inicio" class="text-white hover:text-[#CE93D8] transition-colors py-2">Inicio</a>
+        <a href="#nosotros" class="text-gray-200 hover:text-[#CE93D8] transition-colors py-2">Nosotros</a>
+        <a href="#producto" class="text-gray-200 hover:text-[#CE93D8] transition-colors py-2">Producto</a>
+        <a href="#filosofia" class="text-gray-200 hover:text-[#CE93D8] transition-colors py-2">Filosofía</a>
+        <a href="#proveedores" class="text-gray-200 hover:text-[#CE93D8] transition-colors py-2">Proveedores</a>
+        <a href="#contacto" class="text-gray-200 hover:text-[#CE93D8] transition-colors py-2">Contacto</a>
+      </nav>
+
+      <!-- Botón Hamburguesa Móvil -->
+      <button id="mobile-menu-btn" aria-label="Abrir menú"
+        class="md:hidden p-3 rounded-xl bg-[#6A1B9A]/30 border border-[#CE93D8]/30 text-white hover:bg-[#6A1B9A] transition-colors">
+        <i class="fa-solid fa-bars text-lg" id="mobile-menu-icon"></i>
+      </button>
+    </div>
+
+    <!-- Menú Desplegable Móvil -->
+    <div id="mobile-menu"
+      class="hidden md:hidden bg-[#1A1A1A]/95 backdrop-blur-xl border-b border-[#6A1B9A]/40 px-6 pt-4 pb-6 space-y-3">
+      <a href="#inicio"
+        class="mobile-nav-link block py-2.5 text-base font-medium text-white hover:text-[#CE93D8] border-b border-white/10">Inicio</a>
+      <a href="#nosotros"
+        class="mobile-nav-link block py-2.5 text-base font-medium text-gray-200 hover:text-[#CE93D8] border-b border-white/10">Nosotros</a>
+      <a href="#producto"
+        class="mobile-nav-link block py-2.5 text-base font-medium text-gray-200 hover:text-[#CE93D8] border-b border-white/10">Producto</a>
+      <a href="#filosofia"
+        class="mobile-nav-link block py-2.5 text-base font-medium text-gray-200 hover:text-[#CE93D8] border-b border-white/10">Filosofía</a>
+      <a href="#proveedores"
+        class="mobile-nav-link block py-2.5 text-base font-medium text-gray-200 hover:text-[#CE93D8] border-b border-white/10">Proveedores</a>
+      <a href="#contacto"
+        class="mobile-nav-link block py-2.5 text-base font-medium text-gray-200 hover:text-[#CE93D8]">Contacto</a>
+    </div>
+  </header>
+
+  <!-- =========================================================
+       2. HERO SECTION (INICIO)
+  ========================================================== -->
+  <section id="inicio" class="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden">
+    <!-- Imagen de fondo de auto de lujo + Degradado negro (#1A1A1A) a morado oscuro (#4A148C) -->
+    <div class="absolute inset-0 z-0">
+      <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1920&q=80"
+        alt="Auto deportivo de lujo brillante" class="w-full h-full object-cover object-center opacity-30 scale-105"
+        onerror="this.style.display='none'" />
+      <div class="absolute inset-0 bg-gradient-to-br from-[#1A1A1A] via-[#1A1A1A]/90 to-[#4A148C]/85"></div>
+      <div class="absolute inset-0 luxury-grid-bg opacity-40"></div>
+      <!-- Halo de luz morado -->
+      <div
+        class="absolute -bottom-32 left-1/2 -translate-x-1/2 w-[650px] h-[320px] bg-[#6A1B9A]/35 blur-[130px] rounded-full pointer-events-none">
+      </div>
+    </div>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <!-- Logo Oficial AQUOCAR (Banner Principal)
+           INSTRUCCIÓN: Coloca tu archivo "logo.jpg" en la misma carpeta que este index.html
+           o cambia el atributo src="logo.jpg" por la ruta/URL de tu imagen oficial. -->
+      <div class="hero-animate-1 flex flex-col items-center justify-center mb-8">
+        <div
+          class="relative rounded-3xl overflow-hidden border-2 border-[#CE93D8]/50 shadow-purple-glow max-w-lg w-full bg-[#4A148C]">
+          <img src="logo.jpg" alt="AQUOCAR - Shampoo para autos - 5 Estrellas"
+            class="aquocar-official-logo w-full h-auto object-contain block"
+            onerror="this.src='https://placehold.co/800x400/4A148C/FFFFFF?text=AQUOCAR+%E2%98%85%E2%98%85%E2%98%85%E2%98%85%E2%98%85'" />
+        </div>
+      </div>
+
+      <!-- Título Grande Playfair Display -->
+      <h1
+        class="hero-animate-2 font-display font-extrabold text-5xl sm:text-7xl md:text-8xl tracking-tight text-white mb-6 drop-shadow-lg">
+        AQUOCAR
+      </h1>
+
+      <!-- Subtítulo -->
+      <p
+        class="hero-animate-3 text-lg sm:text-2xl md:text-3xl text-gray-200 font-light max-w-3xl mx-auto leading-relaxed mb-10">
+        Shampoo premium para autos exigentes.
+        <span class="block sm:inline font-medium text-[#CE93D8] mt-1 sm:mt-0">Brillo de 5 estrellas.</span>
+      </p>
+
+      <!-- Botón CTA -->
+      <div class="hero-animate-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#producto"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-[#6A1B9A] hover:bg-white text-white hover:text-[#6A1B9A] font-semibold text-base sm:text-lg px-9 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-purple-glow border border-[#CE93D8]/40">
+          <span>Descubre la experiencia</span>
+          <i class="fa-solid fa-arrow-down text-sm"></i>
+        </a>
+        <a href="#nosotros"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/15 text-white font-medium text-base px-8 py-4 rounded-full transition-all duration-300 border border-white/15">
+          <span>Conoce la marca</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       3. QUIÉNES SOMOS + PROPUESTA DE VALOR (NOSOTROS)
+  ========================================================== -->
+  <section id="nosotros" class="py-24 bg-[#1A1A1A] relative border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
+        <!-- Columna Izquierda: Texto -->
+        <div class="lg:col-span-6 reveal-left">
+          <div
+            class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#6A1B9A]/25 border border-[#CE93D8]/30 text-[#CE93D8] text-xs font-semibold uppercase tracking-widest mb-5">
+            <i class="fa-solid fa-droplet"></i>
+            <span>Identidad &amp; Propuesta de Valor</span>
+          </div>
+
+          <h2 class="font-display font-bold text-3xl sm:text-5xl text-white leading-tight mb-6">
+            La ciencia del cuidado automotriz en cada gota
+          </h2>
+
+          <!-- Etimología visual AQUA + CAR -->
+          <div class="flex flex-wrap items-center gap-3 mb-7">
+            <div class="bg-[#111111] border border-[#6A1B9A] px-4 py-2.5 rounded-xl">
+              <span class="font-display font-bold text-[#CE93D8] text-lg">AQUA</span>
+              <span class="text-xs text-gray-400 ml-1.5">(agua en latín)</span>
+            </div>
+            <span class="text-[#CE93D8] font-bold text-xl">+</span>
+            <div class="bg-[#111111] border border-[#6A1B9A] px-4 py-2.5 rounded-xl">
+              <span class="font-display font-bold text-white text-lg">CAR</span>
+              <span class="text-xs text-gray-400 ml-1.5">(auto en inglés)</span>
+            </div>
+          </div>
+
+          <p class="text-gray-300 text-base sm:text-lg leading-relaxed mb-8">
+            <strong class="text-white font-semibold">AQUOCAR</strong> nace de la unión de <span
+              class="text-[#CE93D8]">AQUA</span> (agua en latín) y <span class="text-[#CE93D8]">CAR</span> (auto en
+            inglés). Ofrecemos un shampoo premium para vehículos exigentes, mediante una fórmula innovadora,
+            biodegradable y de alto desempeño que limpia, da brillo y protege la carrocería. Nuestra propuesta de valor
+            combina una fórmula biodegradable de alta calidad con una identidad elegante y accesible, ofreciendo brillo
+            de 5 estrellas respaldado por una estructura operativa eficiente.
+          </p>
+
+          <!-- Psicología del Color (Extraída de la Presentación Corporativa) -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 mb-8">
+            <div class="bg-[#111111] border border-[#6A1B9A] rounded-2xl p-4">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="w-3.5 h-3.5 rounded-full bg-[#6A1B9A] border border-[#CE93D8]"></span>
+                <span class="font-semibold text-white text-sm">Morado</span>
+              </div>
+              <p class="text-xs text-gray-400 leading-relaxed">Elegancia, lujo y calidad premium.</p>
+            </div>
+            <div class="bg-[#111111] border border-white/15 rounded-2xl p-4">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="w-3.5 h-3.5 rounded-full bg-[#1A1A1A] border border-white/50"></span>
+                <span class="font-semibold text-white text-sm">Negro</span>
+              </div>
+              <p class="text-xs text-gray-400 leading-relaxed">Poder, seriedad y sobriedad.</p>
+            </div>
+            <div class="bg-[#111111] border border-white/15 rounded-2xl p-4">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="w-3.5 h-3.5 rounded-full bg-white"></span>
+                <span class="font-semibold text-white text-sm">Blanco</span>
+              </div>
+              <p class="text-xs text-gray-400 leading-relaxed">Pureza, pulcritud y limpieza impecable.</p>
+            </div>
+          </div>
+
+          <!-- Indicadores destacados -->
+          <div class="grid grid-cols-3 gap-4 pt-6 border-t border-white/10">
+            <div>
+              <div class="font-display font-bold text-2xl sm:text-3xl text-[#CE93D8]">100%</div>
+              <div class="text-xs sm:text-sm text-gray-400 mt-1">Biodegradable</div>
+            </div>
+            <div>
+              <div class="font-display font-bold text-2xl sm:text-3xl text-white">5 <i
+                  class="fa-solid fa-star text-sm text-[#CE93D8]"></i></div>
+              <div class="text-xs sm:text-sm text-gray-400 mt-1">Brillo Protector</div>
+            </div>
+            <div>
+              <div class="font-display font-bold text-2xl sm:text-3xl text-[#CE93D8]">pH</div>
+              <div class="text-xs sm:text-sm text-gray-400 mt-1">Seguro en pintura</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna Derecha: Visual Premium de Producto / Auto Brillante -->
+        <div class="lg:col-span-6 reveal-right">
+          <div
+            class="relative rounded-3xl overflow-hidden border border-[#6A1B9A]/60 shadow-purple-glow bg-gradient-to-br from-[#241033] via-[#1A1A1A] to-[#111111] p-6 sm:p-10">
+            <!-- Imagen de auto brillante con overlay elegante -->
+            <div class="relative rounded-2xl overflow-hidden aspect-[4/3] mb-6">
+              <img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&w=1000&q=80"
+                alt="Lavado detallado y brillo espejo en automóvil"
+                class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
+                onerror="this.src='https://placehold.co/800x600/4A148C/FFFFFF?text=AQUOCAR+5+Estrellas'" />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-transparent to-[#6A1B9A]/30"></div>
+
+              <!-- Etiqueta flotante del frasco AQUOCAR -->
+              <div
+                class="absolute bottom-4 left-4 right-4 bg-[#1A1A1A]/90 backdrop-blur-md border border-[#CE93D8]/40 rounded-2xl p-4 flex items-center justify-between">
+                <div class="flex items-center gap-3.5">
+                  <div
+                    class="w-12 h-12 rounded-xl bg-[#6A1B9A] flex items-center justify-center text-white text-xl shadow-lg">
+                    <i class="fa-solid fa-bottle-droplet"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-display font-bold text-white text-base">Fórmula Concentrada AQUOCAR</h4>
+                    <p class="text-xs text-[#CE93D8]">Espuma activa &bull; Protección UV &bull; Acabado espejo</p>
+                  </div>
+                </div>
+                <div class="hidden sm:flex text-[#CE93D8] text-xs gap-0.5">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between text-xs sm:text-sm text-gray-300 px-1">
+              <span><i class="fa-solid fa-leaf text-[#CE93D8] mr-1.5"></i>Amigable con el medio ambiente</span>
+              <span><i class="fa-solid fa-shield-halved text-[#CE93D8] mr-1.5"></i>Cuidado de carrocería</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       4. PRODUCTO Y CARACTERÍSTICAS
+  ========================================================== -->
+  <section id="producto" class="py-24 bg-[#111111] relative border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Encabezado de Sección -->
+      <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+        <span class="text-[#CE93D8] text-xs font-semibold uppercase tracking-[0.25em]">Ingeniería de Limpieza</span>
+        <h2 class="font-display font-bold text-4xl sm:text-5xl text-white mt-3 mb-4">Nuestro Producto</h2>
+        <p class="text-gray-400 text-base sm:text-lg">
+          Diseñado para entregar resultados profesionales desde la primera aplicación, cuidando cada detalle de tu
+          vehículo y el entorno.
+        </p>
+      </div>
+
+      <!-- Grid de 3 Tarjetas Principales -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+        <!-- Tarjeta 1 -->
+        <div
+          class="reveal bg-[#1A1A1A] border border-[#6A1B9A]/40 hover:border-[#CE93D8] rounded-3xl p-8 transition-all duration-300 hover:-translate-y-2.5 hover:shadow-purple-glow group">
+          <div
+            class="w-16 h-16 rounded-2xl bg-[#6A1B9A]/25 group-hover:bg-[#6A1B9A] text-[#CE93D8] group-hover:text-white flex items-center justify-center text-2xl mb-6 transition-colors duration-300">
+            <i class="fa-solid fa-seedling"></i>
+          </div>
+          <h3 class="font-display font-bold text-2xl text-white mb-3">Fórmula biodegradable</h3>
+          <p class="text-gray-300 leading-relaxed">
+            Limpia, da brillo y protege sin dañar el auto. Su composición ecológica remueve la suciedad difícil
+            respetando ceras, selladores y el medio ambiente.
+          </p>
+        </div>
+
+        <!-- Tarjeta 2 -->
+        <div
+          class="reveal bg-[#1A1A1A] border border-[#6A1B9A]/40 hover:border-[#CE93D8] rounded-3xl p-8 transition-all duration-300 hover:-translate-y-2.5 hover:shadow-purple-glow group">
+          <div
+            class="w-16 h-16 rounded-2xl bg-[#6A1B9A]/25 group-hover:bg-[#6A1B9A] text-[#CE93D8] group-hover:text-white flex items-center justify-center text-2xl mb-6 transition-colors duration-300">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+          </div>
+          <h3 class="font-display font-bold text-2xl text-white mb-3">Fácil de usar</h3>
+          <p class="text-gray-300 leading-relaxed">
+            Etiqueta con instrucciones claras y llamativas. Dosificación práctica y enjuague rápido sin dejar manchas ni
+            residuos de jabón.
+          </p>
+        </div>
+
+        <!-- Tarjeta 3 -->
+        <div
+          class="reveal bg-[#1A1A1A] border border-[#6A1B9A]/40 hover:border-[#CE93D8] rounded-3xl p-8 transition-all duration-300 hover:-translate-y-2.5 hover:shadow-purple-glow group">
+          <div
+            class="w-16 h-16 rounded-2xl bg-[#6A1B9A]/25 group-hover:bg-[#6A1B9A] text-[#CE93D8] group-hover:text-white flex items-center justify-center text-2xl mb-6 transition-colors duration-300">
+            <i class="fa-solid fa-tags"></i>
+          </div>
+          <h3 class="font-display font-bold text-2xl text-white mb-3">Presentaciones económicas</h3>
+          <p class="text-gray-300 leading-relaxed">
+            Tamaños pequeños para probar y grandes para rendir. Opciones ideales tanto para uso personal en casa como
+            para autolavados profesionales.
+          </p>
+        </div>
+      </div>
+
+      <!-- Subsección: Instrucciones de Uso Centradas -->
+      <div class="max-w-4xl mx-auto">
+        <div
+          class="reveal bg-gradient-to-br from-[#6A1B9A]/25 via-[#1A1A1A] to-[#1A1A1A] border border-[#6A1B9A]/50 rounded-3xl p-8 sm:p-10">
+          <div>
+            <div class="flex flex-col items-center text-center mb-8">
+              <span
+                class="w-11 h-11 rounded-xl bg-[#6A1B9A] flex items-center justify-center text-white text-base mb-3 shadow-purple-glow">
+                <i class="fa-solid fa-list-check"></i>
+              </span>
+              <h3 class="font-display font-bold text-2xl sm:text-3xl text-white">Instrucciones de uso</h3>
+              <p class="text-gray-300 text-sm sm:text-base mt-2">
+                Obtén un brillo de 5 estrellas siguiendo estos 4 sencillos pasos:
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <!-- Paso 1 -->
+              <div
+                class="bg-[#111111]/90 border border-white/10 hover:border-[#CE93D8] rounded-2xl p-5 transition-all duration-300 hover:-translate-y-1 flex items-start gap-4">
+                <div
+                  class="w-10 h-10 shrink-0 rounded-xl bg-[#6A1B9A] text-white font-display font-bold text-lg flex items-center justify-center shadow-purple-glow">
+                  1
+                </div>
+                <div>
+                  <h4 class="font-bold text-white text-base">Enjuagar</h4>
+                  <p class="text-xs sm:text-sm text-gray-400 mt-1">Humedece toda la carrocería con abundante agua para
+                    retirar polvo suelto.</p>
+                </div>
+              </div>
+
+              <!-- Paso 2 -->
+              <div
+                class="bg-[#111111]/90 border border-white/10 hover:border-[#CE93D8] rounded-2xl p-5 transition-all duration-300 hover:-translate-y-1 flex items-start gap-4">
+                <div
+                  class="w-10 h-10 shrink-0 rounded-xl bg-[#6A1B9A] text-white font-display font-bold text-lg flex items-center justify-center shadow-purple-glow">
+                  2
+                </div>
+                <div>
+                  <h4 class="font-bold text-white text-base">Aplicar</h4>
+                  <p class="text-xs sm:text-sm text-gray-400 mt-1">Diluye AQUOCAR en una cubeta con agua o aplica con
+                    espumadora sobre el auto.</p>
+                </div>
+              </div>
+
+              <!-- Paso 3 -->
+              <div
+                class="bg-[#111111]/90 border border-white/10 hover:border-[#CE93D8] rounded-2xl p-5 transition-all duration-300 hover:-translate-y-1 flex items-start gap-4">
+                <div
+                  class="w-10 h-10 shrink-0 rounded-xl bg-[#6A1B9A] text-white font-display font-bold text-lg flex items-center justify-center shadow-purple-glow">
+                  3
+                </div>
+                <div>
+                  <h4 class="font-bold text-white text-base">Frotar</h4>
+                  <p class="text-xs sm:text-sm text-gray-400 mt-1">Limpia suavemente de arriba hacia abajo con esponja o
+                    guante de microfibra.</p>
+                </div>
+              </div>
+
+              <!-- Paso 4 -->
+              <div
+                class="bg-[#111111]/90 border border-white/10 hover:border-[#CE93D8] rounded-2xl p-5 transition-all duration-300 hover:-translate-y-1 flex items-start gap-4">
+                <div
+                  class="w-10 h-10 shrink-0 rounded-xl bg-[#6A1B9A] text-white font-display font-bold text-lg flex items-center justify-center shadow-purple-glow">
+                  4
+                </div>
+                <div>
+                  <h4 class="font-bold text-white text-base">Secar</h4>
+                  <p class="text-xs sm:text-sm text-gray-400 mt-1">Enjuaga completamente y seca con paño de microfibra
+                    para revelar el brillo de 5 estrellas.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="mt-7 bg-[#6A1B9A]/20 border border-[#CE93D8]/30 rounded-xl px-4 py-3 text-xs sm:text-sm text-gray-200 flex items-center justify-center gap-2.5 text-center">
+            <i class="fa-solid fa-circle-info text-[#CE93D8]"></i>
+            <span>Recomendación: Lava tu vehículo a la sombra y con la superficie fría para maximizar el acabado
+              espejo.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       5. FILOSOFÍA EMPRESARIAL (MISIÓN, VISIÓN Y VALORES)
+  ========================================================== -->
+  <section id="filosofia" class="py-24 bg-[#1A1A1A] relative border-t border-white/5 overflow-hidden">
+    <!-- Detalle de fondo -->
+    <div class="absolute top-0 right-0 w-96 h-96 bg-[#6A1B9A]/15 rounded-full blur-[120px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+        <span class="text-[#CE93D8] text-xs font-semibold uppercase tracking-[0.25em]">Identidad Corporativa</span>
+        <h2 class="font-display font-bold text-4xl sm:text-5xl text-white mt-3">Nuestra Filosofía</h2>
+      </div>
+
+      <!-- Misión y Visión (2 Tarjetas Elegantes) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        <!-- Misión -->
+        <div
+          class="reveal-left bg-gradient-to-br from-[#6A1B9A] to-[#4A148C] rounded-3xl p-8 sm:p-10 shadow-purple-glow border border-[#CE93D8]/40 relative overflow-hidden">
+          <i class="fa-solid fa-bullseye absolute -right-6 -bottom-6 text-9xl text-white/10 pointer-events-none"></i>
+          <div
+            class="inline-flex items-center gap-2 bg-white/15 px-3.5 py-1.5 rounded-full text-white text-xs font-semibold uppercase tracking-wider mb-5">
+            <i class="fa-solid fa-compass"></i>
+            <span>Misión</span>
+          </div>
+          <h3 class="font-display font-bold text-2xl sm:text-3xl text-white mb-4">Nuestro Propósito</h3>
+          <p class="text-white/95 text-base sm:text-lg leading-relaxed">
+            "Ofrecer un shampoo premium para vehículos exigentes, mediante una fórmula innovadora, biodegradable y de
+            alto desempeño que limpia, da brillo y protege la carrocería."
+          </p>
+        </div>
+
+        <!-- Visión 2029 -->
+        <div
+          class="reveal-right bg-[#111111] rounded-3xl p-8 sm:p-10 border border-[#6A1B9A] shadow-purple-card relative overflow-hidden">
+          <i class="fa-solid fa-eye absolute -right-6 -bottom-6 text-9xl text-[#6A1B9A]/15 pointer-events-none"></i>
+          <div
+            class="inline-flex items-center gap-2 bg-[#6A1B9A]/30 border border-[#CE93D8]/30 px-3.5 py-1.5 rounded-full text-[#CE93D8] text-xs font-semibold uppercase tracking-wider mb-5">
+            <i class="fa-solid fa-flag-checkered"></i>
+            <span>Visión (2029)</span>
+          </div>
+          <h3 class="font-display font-bold text-2xl sm:text-3xl text-white mb-4">Hacia el Liderazgo Nacional</h3>
+          <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
+            "Ser una empresa destacable y de la mayor confianza en el sector automotriz como marca en México, logrando
+            posicionarnos como la marca líder reconocida por su calidad de 5 estrellas."
+          </p>
+        </div>
+      </div>
+
+      <!-- 5 Pilares (Valores en Cascada / Stagger) -->
+      <div>
+        <h3 class="font-display font-bold text-2xl sm:text-3xl text-center text-white mb-10 reveal">
+          Nuestros 5 Pilares de Valor
+        </h3>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+          <!-- Valor 1: Calidad -->
+          <div
+            class="reveal stagger-1 bg-[#111111] border border-white/10 hover:border-[#CE93D8] rounded-2xl p-6 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-purple-glow group">
+            <div
+              class="w-14 h-14 mx-auto rounded-2xl bg-[#6A1B9A]/25 group-hover:bg-[#6A1B9A] text-[#CE93D8] group-hover:text-white flex items-center justify-center text-xl mb-4 transition-colors">
+              <i class="fa-solid fa-award"></i>
+            </div>
+            <h4 class="font-display font-bold text-xl text-white mb-2">Calidad</h4>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              Compromiso de hacer siempre un producto bien hecho.
+            </p>
+          </div>
+
+          <!-- Valor 2: Responsabilidad -->
+          <div
+            class="reveal stagger-2 bg-[#111111] border border-white/10 hover:border-[#CE93D8] rounded-2xl p-6 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-purple-glow group">
+            <div
+              class="w-14 h-14 mx-auto rounded-2xl bg-[#6A1B9A]/25 group-hover:bg-[#6A1B9A] text-[#CE93D8] group-hover:text-white flex items-center justify-center text-xl mb-4 transition-colors">
+              <i class="fa-solid fa-earth-americas"></i>
+            </div>
+            <h4 class="font-display font-bold text-xl text-white mb-2">Responsabilidad</h4>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              Responsables con el cliente y el entorno.
+            </p>
+          </div>
+
+          <!-- Valor 3: Honestidad -->
+          <div
+            class="reveal stagger-3 bg-[#111111] border border-white/10 hover:border-[#CE93D8] rounded-2xl p-6 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-purple-glow group">
+            <div
+              class="w-14 h-14 mx-auto rounded-2xl bg-[#6A1B9A]/25 group-hover:bg-[#6A1B9A] text-[#CE93D8] group-hover:text-white flex items-center justify-center text-xl mb-4 transition-colors">
+              <i class="fa-solid fa-handshake"></i>
+            </div>
+            <h4 class="font-display font-bold text-xl text-white mb-2">Honestidad</h4>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              Cumplimos lo que promete la etiqueta.
+            </p>
+          </div>
+
+          <!-- Valor 4: Pasión -->
+          <div
+            class="reveal stagger-4 bg-[#111111] border border-white/10 hover:border-[#CE93D8] rounded-2xl p-6 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-purple-glow group">
+            <div
+              class="w-14 h-14 mx-auto rounded-2xl bg-[#6A1B9A]/25 group-hover:bg-[#6A1B9A] text-[#CE93D8] group-hover:text-white flex items-center justify-center text-xl mb-4 transition-colors">
+              <i class="fa-solid fa-heart"></i>
+            </div>
+            <h4 class="font-display font-bold text-xl text-white mb-2">Pasión</h4>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              Ponemos al cliente y su auto en el centro.
+            </p>
+          </div>
+
+          <!-- Valor 5: Excelencia -->
+          <div
+            class="reveal stagger-5 bg-[#111111] border border-white/10 hover:border-[#CE93D8] rounded-2xl p-6 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-purple-glow group sm:col-span-2 lg:col-span-1">
+            <div
+              class="w-14 h-14 mx-auto rounded-2xl bg-[#6A1B9A]/25 group-hover:bg-[#6A1B9A] text-[#CE93D8] group-hover:text-white flex items-center justify-center text-xl mb-4 transition-colors">
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <h4 class="font-display font-bold text-xl text-white mb-2">Excelencia</h4>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              Buscamos siempre las 5 estrellas.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       6. PROVEEDORES CLAVE
+  ========================================================== -->
+  <section id="proveedores" class="py-24 bg-[#111111] border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+        <span class="text-[#CE93D8] text-xs font-semibold uppercase tracking-[0.25em]">Aliados Estratégicos</span>
+        <h2 class="font-display font-bold text-4xl sm:text-5xl text-white mt-3 mb-4">Nuestros Proveedores</h2>
+        <p class="text-gray-400 text-base">
+          Trabajamos con socios confiables para garantizar insumos certificados y envases de primera calidad.
+        </p>
+      </div>
+
+      <!-- 4 Tarjetas: Fondo negro (#1A1A1A), texto blanco, borde morado (#6A1B9A) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- Proveedor 1 -->
+        <div
+          class="reveal bg-[#1A1A1A] text-white border-2 border-[#6A1B9A] hover:border-[#CE93D8] rounded-3xl p-7 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2 shadow-purple-card">
+          <div
+            class="w-16 h-16 rounded-2xl bg-[#6A1B9A] text-white flex items-center justify-center text-2xl mb-5 shadow-purple-glow">
+            <i class="fa-solid fa-droplet"></i>
+          </div>
+          <h3 class="font-display font-bold text-xl text-white mb-2">La Casa del Jabonero Oficial</h3>
+          <p class="text-sm text-[#CE93D8] font-medium">Bases y materias primas</p>
+        </div>
+
+        <!-- Proveedor 2 -->
+        <div
+          class="reveal bg-[#1A1A1A] text-white border-2 border-[#6A1B9A] hover:border-[#CE93D8] rounded-3xl p-7 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2 shadow-purple-card">
+          <div
+            class="w-16 h-16 rounded-2xl bg-[#6A1B9A] text-white flex items-center justify-center text-2xl mb-5 shadow-purple-glow">
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+          </div>
+          <h3 class="font-display font-bold text-xl text-white mb-2">Amazon México</h3>
+          <p class="text-sm text-[#CE93D8] font-medium">Herramientas y componentes</p>
+        </div>
+
+        <!-- Proveedor 3 -->
+        <div
+          class="reveal bg-[#1A1A1A] text-white border-2 border-[#6A1B9A] hover:border-[#CE93D8] rounded-3xl p-7 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2 shadow-purple-card">
+          <div
+            class="w-16 h-16 rounded-2xl bg-[#6A1B9A] text-white flex items-center justify-center text-2xl mb-5 shadow-purple-glow">
+            <i class="fa-solid fa-bottle-water"></i>
+          </div>
+          <h3 class="font-display font-bold text-xl text-white mb-2">Plastienvases</h3>
+          <p class="text-sm text-[#CE93D8] font-medium">Botellas, atomizadores y tapas</p>
+        </div>
+
+        <!-- Proveedor 4 -->
+        <div
+          class="reveal bg-[#1A1A1A] text-white border-2 border-[#6A1B9A] hover:border-[#CE93D8] rounded-3xl p-7 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2 shadow-purple-card">
+          <div
+            class="w-16 h-16 rounded-2xl bg-[#6A1B9A] text-white flex items-center justify-center text-2xl mb-5 shadow-purple-glow">
+            <i class="fa-solid fa-atom"></i>
+          </div>
+          <h3 class="font-display font-bold text-xl text-white mb-2">Quimicatrejo</h3>
+          <p class="text-sm text-[#CE93D8] font-medium">Químicos especializados</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       8. PÚBLICO OBJETIVO (MERCADO META)
+  ========================================================== -->
+  <section id="mercado" class="py-24 bg-[#111111] border-t border-white/5 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center mb-14 reveal">
+        <span class="text-[#CE93D8] text-xs font-semibold uppercase tracking-[0.25em]">Mercado Meta</span>
+        <h2 class="font-display font-bold text-4xl sm:text-5xl text-white mt-3 mb-5">¿Para quién es AQUOCAR?</h2>
+        <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
+          Público general de 15 a 60 años. Propietarios y entusiastas de vehículos en general, lavados de autos y
+          entusiastas del detailing que buscan mantener su auto limpio con un producto seguro, de gran brillo y a un
+          precio justo.
+        </p>
+      </div>
+
+      <!-- 3 Tarjetas con íconos -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Tarjeta 1: Propietarios -->
+        <div
+          class="reveal bg-[#1A1A1A] border border-white/10 hover:border-[#CE93D8] rounded-3xl p-8 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-purple-glow">
+          <div
+            class="w-20 h-20 mx-auto rounded-full bg-[#6A1B9A]/25 border border-[#CE93D8]/40 flex items-center justify-center text-4xl mb-6">
+            🚗
+          </div>
+          <h3 class="font-display font-bold text-2xl text-white mb-3">Propietarios</h3>
+          <p class="text-gray-400 text-sm sm:text-base leading-relaxed">
+            Conductores que cuidan su inversión diaria y desean resultados profesionales en casa de forma sencilla y
+            económica.
+          </p>
+        </div>
+
+        <!-- Tarjeta 2: Lavados de autos -->
+        <div
+          class="reveal bg-[#1A1A1A] border border-white/10 hover:border-[#CE93D8] rounded-3xl p-8 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-purple-glow">
+          <div
+            class="w-20 h-20 mx-auto rounded-full bg-[#6A1B9A]/25 border border-[#CE93D8]/40 flex items-center justify-center text-4xl mb-6">
+            🧼
+          </div>
+          <h3 class="font-display font-bold text-2xl text-white mb-3">Lavados de autos</h3>
+          <p class="text-gray-400 text-sm sm:text-base leading-relaxed">
+            Negocios y autolavados que requieren alto rendimiento, espuma activa y presentaciones económicas para
+            maximizar su rentabilidad.
+          </p>
+        </div>
+
+        <!-- Tarjeta 3: Entusiastas del detailing -->
+        <div
+          class="reveal bg-[#1A1A1A] border border-white/10 hover:border-[#CE93D8] rounded-3xl p-8 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-purple-glow">
+          <div
+            class="w-20 h-20 mx-auto rounded-full bg-[#6A1B9A]/25 border border-[#CE93D8]/40 flex items-center justify-center text-4xl mb-6">
+            ✨
+          </div>
+          <h3 class="font-display font-bold text-2xl text-white mb-3">Entusiastas del detailing</h3>
+          <p class="text-gray-400 text-sm sm:text-base leading-relaxed">
+            Apasionados por la estética automotriz que exigen protección de carrocería y un acabado espejo digno de
+            exhibición.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       8. CONTACTO (FORMULARIO INTERACTIVO + REDES)
+  ========================================================== -->
+  <section id="contacto" class="py-24 bg-[#1A1A1A] border-t border-white/5 relative overflow-hidden">
+    <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-[#6A1B9A]/25 blur-[130px] rounded-full pointer-events-none">
+    </div>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+
+        <!-- Información de Contacto y Botones Directos -->
+        <div class="lg:col-span-5 reveal-left">
+          <span class="text-[#CE93D8] text-xs font-semibold uppercase tracking-[0.25em]">Atención Personalizada</span>
+          <h2 class="font-display font-bold text-4xl sm:text-5xl text-white mt-3 mb-4">Contáctanos</h2>
+          <p class="text-gray-300 text-base sm:text-lg mb-8">
+            ¿Quieres cotizar o adquirir nuestro producto? ¡Escríbenos!
+          </p>
+
+          <!-- Botones directos de WhatsApp y Gmail -->
+          <!-- NOTA: Reemplaza "5210000000000" por tu número real de WhatsApp con código de país (ej. 5212291234567) -->
+          <div class="space-y-4">
+            <a href="https://wa.me/2872840915?text=Hola%20AQUOCAR,%20me%20interesa%20cotizar%20el%20shampoo%20para%20autos."
+              target="_blank" rel="noopener noreferrer"
+              class="w-full flex items-center justify-between bg-[#6A1B9A] hover:bg-white text-white hover:text-[#6A1B9A] px-6 py-4 rounded-2xl font-semibold transition-all duration-300 shadow-purple-glow border border-[#CE93D8]/40 group">
+              <span class="flex items-center gap-3">
+                <i class="fa-brands fa-whatsapp text-2xl"></i>
+                <span>Escribir por WhatsApp</span>
+              </span>
+              <i
+                class="fa-solid fa-arrow-up-right-from-square text-sm opacity-80 group-hover:translate-x-0.5 transition-transform"></i>
+            </a>
+
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=aquocar@gmail.com&su=Cotizaci%C3%B3n%20AQUOCAR"
+              target="_blank" rel="noopener noreferrer"
+              class="w-full flex items-center justify-between bg-[#1A1A1A] hover:bg-[#6A1B9A]/30 text-white px-6 py-4 rounded-2xl font-semibold transition-all duration-300 border border-[#6A1B9A] group">
+              <span class="flex items-center gap-3">
+                <i class="fa-solid fa-envelope text-xl text-[#CE93D8]"></i>
+                <span>Enviar correo (Gmail)</span>
+              </span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-sm text-[#CE93D8]"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Formulario Interactivo -->
+        <div class="lg:col-span-7 reveal-right">
+          <form id="contact-form" novalidate
+            class="bg-[#1A1A1A] border border-[#6A1B9A]/60 rounded-3xl p-8 sm:p-10 shadow-purple-card space-y-6">
+            <div>
+              <label for="nombre" class="block text-sm font-medium text-gray-200 mb-2">Nombre completo</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Ej. Carlos Mendoza"
+                class="w-full bg-[#111111] border border-white/15 focus:border-[#CE93D8] focus:ring-2 focus:ring-[#6A1B9A]/50 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 outline-none transition-all" />
+              <p id="error-nombre" class="hidden text-xs text-[#CE93D8] mt-1.5"><i
+                  class="fa-solid fa-circle-exclamation mr-1"></i>Por favor ingresa tu nombre.</p>
+            </div>
+
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-200 mb-2">Correo electrónico</label>
+              <input type="email" id="email" name="email" placeholder="correo@ejemplo.com"
+                class="w-full bg-[#111111] border border-white/15 focus:border-[#CE93D8] focus:ring-2 focus:ring-[#6A1B9A]/50 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 outline-none transition-all" />
+              <p id="error-email" class="hidden text-xs text-[#CE93D8] mt-1.5"><i
+                  class="fa-solid fa-circle-exclamation mr-1"></i>Por favor ingresa un correo electrónico válido.</p>
+            </div>
+
+            <div>
+              <label for="mensaje" class="block text-sm font-medium text-gray-200 mb-2">Mensaje</label>
+              <textarea id="mensaje" name="mensaje" rows="4"
+                placeholder="Cuéntanos qué presentación o aroma te interesa cotizar..."
+                class="w-full bg-[#111111] border border-white/15 focus:border-[#CE93D8] focus:ring-2 focus:ring-[#6A1B9A]/50 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 outline-none transition-all resize-none"></textarea>
+              <p id="error-mensaje" class="hidden text-xs text-[#CE93D8] mt-1.5"><i
+                  class="fa-solid fa-circle-exclamation mr-1"></i>Por favor escribe tu mensaje.</p>
+            </div>
+
+            <button type="submit"
+              class="w-full bg-[#6A1B9A] hover:bg-white text-white hover:text-[#6A1B9A] font-bold text-base py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-[1.01] shadow-purple-glow border border-[#CE93D8]/40 flex items-center justify-center gap-2.5">
+              <span>Enviar</span>
+              <i class="fa-solid fa-paper-plane text-sm"></i>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       11. FOOTER (PIE DE PÁGINA)
+  ========================================================== -->
+  <footer class="bg-[#1A1A1A] text-white border-t-2 border-[#6A1B9A] py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center">
+
+      <!-- Marca y Copyright -->
+      <div>
+        <div class="flex items-center justify-center gap-2 mb-2">
+          <span class="font-display font-bold text-xl tracking-wider text-white">AQUO<span
+              class="text-[#CE93D8]">CAR</span></span>
+          <span class="text-xs text-[#CE93D8]">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </span>
+        </div>
+        <p class="text-sm text-gray-300">
+          © 2026 AQUOCAR - Shampoo para autos. Brillo de 5 estrellas.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================
+       BOTÓN FLOTANTE DE WHATSAPP
+       INSTRUCCIÓN: Cambia "5210000000000" en el atributo href por tu
+       número real con código de país (sin espacios ni signo +).
+       Ejemplo México: https://wa.me/5212291234567?text=...
+  ========================================================== -->
+  <a href="https://wa.me/2872840915?text=Hola%20AQUOCAR,%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20productos."
+    target="_blank" rel="noopener noreferrer" aria-label="Contactar a AQUOCAR por WhatsApp"
+    class="fixed bottom-6 right-6 z-40 group flex items-center gap-3 bg-[#6A1B9A] hover:bg-white text-white hover:text-[#6A1B9A] px-4 py-3.5 rounded-full shadow-purple-glow border-2 border-[#CE93D8]/60 transition-all duration-300 hover:scale-105">
+    <i class="fa-brands fa-whatsapp text-2xl"></i>
+    <span class="hidden sm:inline font-semibold text-sm pr-1">WhatsApp</span>
+  </a>
+
+  <!-- =========================================================
+       MODAL DE CONFIRMACIÓN (SIN ALERT NATIVO)
+  ========================================================== -->
+  <div id="success-modal"
+    class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+    <div
+      class="bg-[#1A1A1A] border-2 border-[#6A1B9A] rounded-3xl max-w-md w-full p-8 text-center shadow-purple-glow transform transition-all scale-100">
+      <div
+        class="w-16 h-16 mx-auto rounded-full bg-[#6A1B9A] text-white flex items-center justify-center text-3xl mb-5 shadow-purple-glow">
+        <i class="fa-solid fa-check"></i>
+      </div>
+      <div class="flex justify-center gap-1 text-[#CE93D8] text-xs mb-2">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+      </div>
+      <h3 class="font-display font-bold text-2xl text-white mb-3">¡Mensaje Enviado!</h3>
+      <p class="text-gray-200 text-base leading-relaxed mb-7">
+        ¡Gracias por contactar a AQUOCAR! Te responderemos pronto.
+      </p>
+      <button id="close-modal-btn" type="button"
+        class="w-full bg-[#6A1B9A] hover:bg-white text-white hover:text-[#6A1B9A] font-semibold py-3.5 px-6 rounded-xl transition-all duration-300 border border-[#CE93D8]/40">
+        Aceptar
+      </button>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       JAVASCRIPT VANILLA (INTERACTIVIDAD, SCROLL, ACORDEÓN, MODAL)
+  ========================================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Header con efecto Glassmorphism al hacer scroll
+      const header = document.getElementById('main-header');
+      const handleScroll = () => {
+        if (window.scrollY > 40) {
+          header.classList.add('header-scrolled');
+          header.classList.remove('py-4');
+          header.classList.add('py-3');
+        } else {
+          header.classList.remove('header-scrolled');
+          header.classList.remove('py-3');
+          header.classList.add('py-4');
+        }
+      };
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      handleScroll();
+
+      // 2. Menú móvil desplegable
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+      const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+      mobileMenuBtn.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.toggle('hidden');
+        mobileMenuIcon.className = isHidden ? 'fa-solid fa-bars text-lg' : 'fa-solid fa-xmark text-lg';
+      });
+
+      mobileNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          mobileMenuIcon.className = 'fa-solid fa-bars text-lg';
+        });
+      });
+
+      // 3. Animaciones suaves al hacer scroll (Intersection Observer)
+      const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-zoom');
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      revealElements.forEach(el => revealObserver.observe(el));
+
+      // 4. Validación del Formulario de Contacto y Modal Personalizado
+      const contactForm = document.getElementById('contact-form');
+      const nombreInput = document.getElementById('nombre');
+      const emailInput = document.getElementById('email');
+      const mensajeInput = document.getElementById('mensaje');
+
+      const errorNombre = document.getElementById('error-nombre');
+      const errorEmail = document.getElementById('error-email');
+      const errorMensaje = document.getElementById('error-mensaje');
+
+      const successModal = document.getElementById('success-modal');
+      const closeModalBtn = document.getElementById('close-modal-btn');
+
+      const validateEmail = (email) => {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      };
+
+      const clearFieldError = (input, errorEl) => {
+        input.addEventListener('input', () => {
+          errorEl.classList.add('hidden');
+          input.classList.remove('border-[#CE93D8]');
+        });
+      };
+
+      clearFieldError(nombreInput, errorNombre);
+      clearFieldError(emailInput, errorEmail);
+      clearFieldError(mensajeInput, errorMensaje);
+
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let isValid = true;
+
+        // Validar Nombre
+        if (!nombreInput.value.trim()) {
+          errorNombre.classList.remove('hidden');
+          nombreInput.classList.add('border-[#CE93D8]');
+          isValid = false;
+        } else {
+          errorNombre.classList.add('hidden');
+          nombreInput.classList.remove('border-[#CE93D8]');
+        }
+
+        // Validar Correo electrónico
+        if (!emailInput.value.trim() || !validateEmail(emailInput.value.trim())) {
+          errorEmail.classList.remove('hidden');
+          emailInput.classList.add('border-[#CE93D8]');
+          isValid = false;
+        } else {
+          errorEmail.classList.add('hidden');
+          emailInput.classList.remove('border-[#CE93D8]');
+        }
+
+        // Validar Mensaje
+        if (!mensajeInput.value.trim()) {
+          errorMensaje.classList.remove('hidden');
+          mensajeInput.classList.add('border-[#CE93D8]');
+          isValid = false;
+        } else {
+          errorMensaje.classList.add('hidden');
+          mensajeInput.classList.remove('border-[#CE93D8]');
+        }
+
+        if (isValid) {
+          // Mostrar modal emergente personalizado
+          successModal.classList.remove('hidden');
+          successModal.classList.add('flex');
+          contactForm.reset();
+        }
+      });
+
+      // Cerrar modal
+      const closeModal = () => {
+        successModal.classList.add('hidden');
+        successModal.classList.remove('flex');
+      };
+
+      closeModalBtn.addEventListener('click', closeModal);
+      successModal.addEventListener('click', (e) => {
+        if (e.target === successModal) {
+          closeModal();
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
